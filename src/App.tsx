@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-06-01 10:24:46
+ * @LastEditTime: 2021-06-22 10:37:27
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /todo-list/src/App.tsx
+ */
 import React from 'react';
 import Header from './components/Header'
 import List from './components/List'
@@ -14,7 +22,7 @@ class App extends React.Component {
     ]
   }
 
-  checkAllOrNot = (flag) => {
+  checkAllOrNot = (flag: boolean) => {
     const { todos } = this.state;
     const newTodos = todos.map( todo => {
       const done = flag;
@@ -23,7 +31,7 @@ class App extends React.Component {
     this.setState({ todos: newTodos });
   }
 
-  updateTodo = (id, done) => {
+  updateTodo = (id: string, done: boolean) => {
     const { todos } = this.state;
     const newTodos = todos.map( todo => {
       if (todo.id === id) {
@@ -35,7 +43,7 @@ class App extends React.Component {
     this.setState({ todos: newTodos });
   }
 
-  deleteTodo = (id) => {
+  deleteTodo = (id: string) => {
     const { todos } = this.state;
     const newTodos = todos.filter( todo => {
       return todo.id !== id;
@@ -43,7 +51,7 @@ class App extends React.Component {
     this.setState({ todos: newTodos });
   }
 
-  addTodo = (todo) => {
+  addTodo = (todo: {}) => {
     const { todos } = this.state;
     const newTodos = [todo, ...todos];
     this.setState({ todos: newTodos });
@@ -58,7 +66,18 @@ class App extends React.Component {
     this.setState({ todos: newTodos });
   }
 
+  test = () => {
+    let input = [1, 2];
+    let [first, second] = input;
+    console.log(first);     // outputs 1
+    console.log(second);    // outputs 2
+
+    [second, first] = [first, second];
+    console.log(first, second);
+  }
+
   render() {
+    this.test();
     const { todos } = this.state
     return (
       <div className="todo-container">
